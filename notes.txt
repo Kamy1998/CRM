@@ -13,7 +13,7 @@
 [x] Phase 10: LOA permissions — restricted to assigned clients, all actions logged, request-to-delete flow
 [x] Phase 11: Agent permissions — restricted view (status, public notes, closing date, contingency dates only)
 [x] Phase 12: Notifications system — in-app bell, all notification types, 48hr stale flag cron
-[ ] Phase 13: UI polish — responsive design, save-before-leave prompts, loading/empty states, color system
+[x] Phase 13: UI polish — responsive design, save-before-leave prompts, loading/empty states, color system
 [ ] Phase 14: Testing and bug fixes — all 3 roles tested end-to-end
 [ ] Phase 15: Vercel deployment, environment variables, cron jobs, production checklist
 

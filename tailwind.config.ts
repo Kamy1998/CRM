@@ -11,6 +11,13 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        brand: {
+          navy: "#1E3A5F",
+          gold: "#C9A84C",
+        },
+        surface: "#FFFFFF",
+        danger: "#DC2626",
+        success: "#16A34A",
       },
     },
   },
