@@ -5,7 +5,7 @@
 [x] Phase 2:  Supabase schema — all tables, RLS policies, triggers
 [x] Phase 3:  Authentication — 3 role system (Admin, LOA, Agent), login/logout, protected routes, app layout
 [x] Phase 4:  Pipeline page — full table with all columns, filters, urgency badges, red flag logic
-[ ] Phase 5:  Dashboard page — summary cards, 48hr to-do list, new agent submissions, volume report, notifications panel, upcoming closings, contingency deadlines
+[x] Phase 5:  Dashboard page — summary cards, 48hr to-do list, new agent submissions, volume report, notifications panel, upcoming closings, contingency deadlines
 [ ] Phase 6:  Client detail page — all fields, dual note system (private/public with timestamps), audit trail
 [ ] Phase 7:  Agent submission flow — new client form (5 questions), admin notification, pipeline integration
 [ ] Phase 8:  Users management tab — Admin CRUD for users, role assignment, credentials
