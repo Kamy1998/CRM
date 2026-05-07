@@ -1,7 +1,7 @@
 4EVER LENDING CRM — BUILD PHASES
 =================================
 
-[ ] Phase 1:  Project scaffold, folder structure, environment config, TypeScript types
+[x] Phase 1:  Project scaffold, folder structure, environment config, TypeScript types
 [ ] Phase 2:  Supabase schema — all tables, RLS policies, triggers
 [ ] Phase 3:  Authentication — 3 role system (Admin, LOA, Agent), login/logout, protected routes, app layout
 [ ] Phase 4:  Pipeline page — full table with all columns, filters, urgency badges, red flag logic
