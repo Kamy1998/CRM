@@ -1,8 +1,36 @@
-export default function PipelinePage() {
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
+import { createSupabaseServerClient } from '@/lib/supabase';
+import PipelineClient from './PipelineClient';
+import type { Profile } from '@/types';
+
+export default async function PipelinePage() {
+  const cookieStore = cookies();
+  const supabase = createSupabaseServerClient(cookieStore);
+
+  const { data: { session } } = await supabase.auth.getSession();
+  if (!session) redirect('/login');
+
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('id', session.user.id)
+    .single();
+
+  if (!profile || profile.role === 'agent') {
+    redirect('/my-clients');
+  }
+
+  const [{ data: agents }, { data: loas }] = await Promise.all([
+    supabase.from('profiles').select('id, full_name, role').eq('role', 'agent').eq('is_active', true),
+    supabase.from('profiles').select('id, full_name, role').eq('role', 'loa').eq('is_active', true),
+  ]);
+
   return (
-    <div>
-      <h1 className="text-2xl font-bold text-[#1E3A5F] mb-6">Pipeline</h1>
-      <p className="text-gray-500">Pipeline table coming in Phase 4.</p>
-    </div>
+    <PipelineClient
+      currentProfile={profile as Profile}
+      agents={(agents ?? []) as Profile[]}
+      loas={(loas ?? []) as Profile[]}
+    />
   );
 }
