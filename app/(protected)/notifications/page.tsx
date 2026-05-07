@@ -1,8 +1,35 @@
-export default function NotificationsPage() {
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
+import { createSupabaseServerClient } from '@/lib/supabase';
+import NotificationsClient from './NotificationsClient';
+import type { Profile, Notification } from '@/types';
+
+export default async function NotificationsPage() {
+  const cookieStore = cookies();
+  const supabase = createSupabaseServerClient(cookieStore);
+
+  const { data: { session } } = await supabase.auth.getSession();
+  if (!session) redirect('/login');
+
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('id', session.user.id)
+    .single();
+
+  if (!profile) redirect('/login');
+
+  const { data: notifications } = await supabase
+    .from('notifications')
+    .select('*')
+    .eq('user_id', session.user.id)
+    .order('created_at', { ascending: false })
+    .limit(100);
+
   return (
-    <div>
-      <h1 className="text-2xl font-bold text-[#1E3A5F] mb-6">Notifications</h1>
-      <p className="text-gray-500">Full notifications page coming in Phase 12.</p>
-    </div>
+    <NotificationsClient
+      profile={profile as Profile}
+      notifications={(notifications ?? []) as Notification[]}
+    />
   );
 }
