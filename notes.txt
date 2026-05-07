@@ -9,7 +9,7 @@
 [x] Phase 6:  Client detail page — all fields, dual note system (private/public with timestamps), audit trail
 [x] Phase 7:  Agent submission flow — new client form (5 questions), admin notification, pipeline integration
 [x] Phase 8:  Users management tab — Admin CRUD for users, role assignment, credentials
-[ ] Phase 9:  Tasks system — create/assign tasks, notifications, 24hr reminders, task close-out with notes
+[x] Phase 9:  Tasks system — create/assign tasks, notifications, 24hr reminders, task close-out with notes
 [ ] Phase 10: LOA permissions — restricted to assigned clients, all actions logged, request-to-delete flow
 [ ] Phase 11: Agent permissions — restricted view (status, public notes, closing date, contingency dates only)
 [ ] Phase 12: Notifications system — in-app bell, all notification types, 48hr stale flag cron
