@@ -1,8 +1,30 @@
-export default function UsersPage() {
-  return (
-    <div>
-      <h1 className="text-2xl font-bold text-[#1E3A5F] mb-6">Users</h1>
-      <p className="text-gray-500">User management coming in Phase 8.</p>
-    </div>
-  );
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
+import { createSupabaseServerClient } from '@/lib/supabase';
+import UsersClient from './UsersClient';
+import type { Profile } from '@/types';
+
+export default async function UsersPage() {
+  const cookieStore = cookies();
+  const supabase = createSupabaseServerClient(cookieStore);
+
+  const { data: { session } } = await supabase.auth.getSession();
+  if (!session) redirect('/login');
+
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('id', session.user.id)
+    .single();
+
+  if (!profile || profile.role !== 'admin') {
+    redirect('/dashboard');
+  }
+
+  const { data: users } = await supabase
+    .from('profiles')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  return <UsersClient users={(users ?? []) as Profile[]} />;
 }

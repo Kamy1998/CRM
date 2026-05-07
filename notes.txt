@@ -8,7 +8,7 @@
 [x] Phase 5:  Dashboard page — summary cards, 48hr to-do list, new agent submissions, volume report, notifications panel, upcoming closings, contingency deadlines
 [x] Phase 6:  Client detail page — all fields, dual note system (private/public with timestamps), audit trail
 [x] Phase 7:  Agent submission flow — new client form (5 questions), admin notification, pipeline integration
-[ ] Phase 8:  Users management tab — Admin CRUD for users, role assignment, credentials
+[x] Phase 8:  Users management tab — Admin CRUD for users, role assignment, credentials
 [ ] Phase 9:  Tasks system — create/assign tasks, notifications, 24hr reminders, task close-out with notes
 [ ] Phase 10: LOA permissions — restricted to assigned clients, all actions logged, request-to-delete flow
 [ ] Phase 11: Agent permissions — restricted view (status, public notes, closing date, contingency dates only)
