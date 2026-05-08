@@ -38,8 +38,8 @@ export default function LoginForm() {
     <div className="min-h-screen bg-[#F8F9FA] flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-lg w-full max-w-md p-8">
         <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-[#1E3A5F]">4Ever Lending</h1>
-          <p className="text-gray-500 mt-1 text-sm">CRM — Sign in to your account</p>
+          <h1 className="text-2xl font-bold text-[#1E3A5F]">CRM</h1>
+          <p className="text-gray-500 mt-1 text-sm">Sign in to your account</p>
         </div>
 
         {error === 'deactivated' && (

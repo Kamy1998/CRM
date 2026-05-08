@@ -6,8 +6,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "4Ever Lending CRM",
-  description: "Mortgage pipeline management for 4Ever Lending",
+  title: "CRM",
+  description: "Mortgage pipeline management",
 };
 
 export default function RootLayout({

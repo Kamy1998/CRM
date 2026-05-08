@@ -35,8 +35,7 @@ export default function Sidebar({ role, onClose }: SidebarProps) {
   return (
     <div className="flex flex-col h-full bg-[#1E3A5F] text-white">
       <div className="px-6 py-5 border-b border-white/10">
-        <h1 className="font-bold text-lg leading-tight">4Ever Lending</h1>
-        <p className="text-white/50 text-xs mt-0.5">CRM</p>
+        <h1 className="font-bold text-lg leading-tight">CRM</h1>
       </div>
 
       <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
