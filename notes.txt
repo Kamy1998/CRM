@@ -15,6 +15,10 @@
 [x] Phase 12: Notifications system — in-app bell, all notification types, 48hr stale flag cron
 [x] Phase 13: UI polish — responsive design, save-before-leave prompts, loading/empty states, color system
 [x] Phase 14: Testing and bug fixes — all 3 roles tested end-to-end
-[ ] Phase 15: Vercel deployment, environment variables, cron jobs, production checklist
+[x] Phase 15: Vercel deployment, environment variables, cron jobs, production checklist
 
 Progress notes:
+All 15 phases complete. Build passes (npm run build). TypeScript 0 errors.
+To deploy: import https://github.com/Kamy1998/CRM into Vercel, add env vars, push triggers auto-deploy.
+Env vars needed: NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY
+Before going live: Apply supabase/migrations/001_initial_schema.sql in Supabase SQL editor.
