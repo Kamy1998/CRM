@@ -71,7 +71,7 @@ export default function NotificationsClient({ profile, notifications: initialNot
 
       {notifications.length === 0 ? (
         <div className="bg-white rounded-xl border border-gray-200 py-16 text-center text-sm text-gray-400">
-          You're all caught up! ✅
+          You&apos;re all caught up! ✅
         </div>
       ) : (
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">

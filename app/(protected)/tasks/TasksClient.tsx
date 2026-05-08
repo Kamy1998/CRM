@@ -1,10 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { createSupabaseBrowserClient } from '@/lib/supabase';
 import { toast } from 'sonner';
-import { formatDate, formatTimestamp } from '@/lib/utils';
+import { formatDate } from '@/lib/utils';
 import type { Task, Profile } from '@/types';
 import { Plus, CheckCircle, Clock, AlertCircle } from 'lucide-react';
 import { isAfter, parseISO, isValid } from 'date-fns';
@@ -20,7 +19,6 @@ interface Props {
 type TabId = 'mine' | 'assigned' | 'all';
 
 export default function TasksClient({ currentProfile, myTasks: initMine, assignedByMe: initAssigned, allTasks: initAll, profiles }: Props) {
-  const router = useRouter();
   const supabase = createSupabaseBrowserClient();
 
   const [activeTab, setActiveTab] = useState<TabId>('mine');
@@ -204,16 +202,16 @@ export default function TasksClient({ currentProfile, myTasks: initMine, assigne
                       )}
                       <div className="flex items-center gap-3 mt-1.5 flex-wrap">
                         <span className="text-xs text-gray-400">
-                          Assigned to: <span className="text-gray-600">{(task as any).assignee?.full_name ?? '—'}</span>
+                          Assigned to: <span className="text-gray-600">{(task as Task & { assignee?: { full_name: string } }).assignee?.full_name ?? '—'}</span>
                         </span>
                         {task.due_date && (
                           <span className={`text-xs ${overdue ? 'text-red-600 font-medium' : 'text-gray-400'}`}>
                             Due: {formatDate(task.due_date)}
                           </span>
                         )}
-                        {(task as any).client && (
+                        {(task as Task & { client?: { first_name: string; last_name: string } }).client && (
                           <span className="text-xs text-gray-400">
-                            Client: {(task as any).client.first_name} {(task as any).client.last_name}
+                            Client: {(task as Task & { client?: { first_name: string; last_name: string } }).client?.first_name} {(task as Task & { client?: { first_name: string; last_name: string } }).client?.last_name}
                           </span>
                         )}
                       </div>
@@ -300,7 +298,7 @@ export default function TasksClient({ currentProfile, myTasks: initMine, assigne
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl shadow-xl p-6 w-full max-w-md">
             <h2 className="text-lg font-semibold text-gray-900 mb-1">Mark Task Complete</h2>
-            <p className="text-sm text-gray-600 mb-4">"{completeTarget.title}"</p>
+            <p className="text-sm text-gray-600 mb-4">&quot;{completeTarget.title}&quot;</p>
             <div>
               <label className="block text-xs font-medium text-gray-500 mb-1">Completion Note *</label>
               <textarea

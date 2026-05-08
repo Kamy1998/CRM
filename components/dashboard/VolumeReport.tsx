@@ -1,6 +1,5 @@
 'use client';
 
-import { getStatusGroup } from '@/lib/constants';
 import type { Client, Profile } from '@/types';
 
 interface Props {

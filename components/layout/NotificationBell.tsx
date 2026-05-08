@@ -5,7 +5,6 @@ import { Bell } from 'lucide-react';
 import { createSupabaseBrowserClient } from '@/lib/supabase';
 import { formatRelativeTime } from '@/lib/utils';
 import type { Notification } from '@/types';
-import { Button } from '@/components/ui/button';
 
 export default function NotificationBell({ userId }: { userId: string }) {
   const [notifications, setNotifications] = useState<Notification[]>([]);
@@ -15,8 +14,9 @@ export default function NotificationBell({ userId }: { userId: string }) {
   const unreadCount = notifications.filter((n) => !n.is_read).length;
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     loadNotifications();
-  }, []);
+  }, [userId]);
 
   async function loadNotifications() {
     const { data } = await supabase
@@ -85,7 +85,7 @@ export default function NotificationBell({ userId }: { userId: string }) {
             <div className="max-h-96 overflow-y-auto">
               {notifications.length === 0 ? (
                 <div className="px-4 py-8 text-center text-sm text-gray-400">
-                  You're all caught up! ✅
+                  You&apos;re all caught up! ✅
                 </div>
               ) : (
                 notifications.map((n) => (

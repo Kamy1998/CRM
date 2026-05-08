@@ -57,7 +57,7 @@ export default function UpcomingClosings({ clients }: Props) {
                       </span>
                     ) : '—'}
                   </td>
-                  <td className="px-3 py-3 text-gray-600">{(c as any).agent?.full_name ?? '—'}</td>
+                  <td className="px-3 py-3 text-gray-600">{(c as Client & { agent?: { full_name: string } }).agent?.full_name ?? '—'}</td>
                   <td className="px-3 py-3"><StatusBadge status={c.status} /></td>
                 </tr>
               );

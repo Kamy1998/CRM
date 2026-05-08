@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { Flag } from 'lucide-react';
-import { formatRelativeTime, isStale } from '@/lib/utils';
 import UrgencyBadge from '@/components/pipeline/UrgencyBadge';
 import StatusBadge from '@/components/pipeline/StatusBadge';
 import type { Client } from '@/types';
@@ -16,7 +15,7 @@ export default function NeedsAttentionTable({ clients }: Props) {
   if (clients.length === 0) {
     return (
       <div className="bg-white rounded-xl border border-gray-200 p-6 text-center text-sm text-gray-400">
-        Nothing here — you're all caught up! ✅
+        Nothing here — you&apos;re all caught up! ✅
       </div>
     );
   }
@@ -53,7 +52,7 @@ export default function NeedsAttentionTable({ clients }: Props) {
                   </td>
                   <td className="px-3 py-3"><UrgencyBadge urgency={c.urgency} /></td>
                   <td className="px-3 py-3"><StatusBadge status={c.status} /></td>
-                  <td className="px-3 py-3 text-gray-600">{(c as any).agent?.full_name ?? '—'}</td>
+                  <td className="px-3 py-3 text-gray-600">{(c as Client & { agent?: { full_name: string } }).agent?.full_name ?? '—'}</td>
                   <td className="px-3 py-3 text-red-600 font-medium">
                     {days > 0 ? `${days}d ${hours % 24}h` : `${hours}h`}
                   </td>

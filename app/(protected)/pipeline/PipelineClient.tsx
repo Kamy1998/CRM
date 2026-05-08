@@ -53,11 +53,13 @@ export default function PipelineClient({ currentProfile, agents, loas }: Props) 
       setClients(data ?? []);
     }
     setLoading(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     loadClients();
-  }, [loadClients]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const filtered = clients.filter((c) => {
     if (filters.search) {

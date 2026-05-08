@@ -2,17 +2,16 @@
 
 import Link from 'next/link';
 import { PlusCircle, Eye } from 'lucide-react';
-import { formatDate, isStale } from '@/lib/utils';
+import { formatDate } from '@/lib/utils';
 import UrgencyBadge from '@/components/pipeline/UrgencyBadge';
 import StatusBadge from '@/components/pipeline/StatusBadge';
-import type { Client, Profile } from '@/types';
+import type { Client } from '@/types';
 
 interface Props {
-  profile: Profile;
   clients: Partial<Client>[];
 }
 
-export default function MyClientsClient({ profile, clients }: Props) {
+export default function MyClientsClient({ clients }: Props) {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">

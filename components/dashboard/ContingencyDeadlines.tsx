@@ -57,7 +57,7 @@ export default function ContingencyDeadlines({ clients }: Props) {
             </tr>
           </thead>
           <tbody>
-            {rows.map((row, i) => {
+            {rows.map((row) => {
               const days = daysBetween(row.date);
               const color =
                 days !== null && days <= 3 ? 'text-red-600' :
@@ -82,7 +82,7 @@ export default function ContingencyDeadlines({ clients }: Props) {
                   <td className={cn('px-3 py-3 font-semibold', color)}>
                     {days !== null ? `${days}d` : '—'}
                   </td>
-                  <td className="px-3 py-3 text-gray-600">{(row.client as any).agent?.full_name ?? '—'}</td>
+                  <td className="px-3 py-3 text-gray-600">{(row.client as Client & { agent?: { full_name: string } }).agent?.full_name ?? '—'}</td>
                 </tr>
               );
             })}

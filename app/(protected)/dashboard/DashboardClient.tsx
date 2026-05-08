@@ -136,7 +136,7 @@ export default function DashboardClient({
                           {c.first_name} {c.last_name}
                         </td>
                         <td className="px-3 py-3 text-gray-600 capitalize">{c.loan_type ?? '—'}</td>
-                        <td className="px-3 py-3 text-gray-600">{(c as any).agent?.full_name ?? '—'}</td>
+                        <td className="px-3 py-3 text-gray-600">{(c as Client & { agent?: { full_name: string } }).agent?.full_name ?? '—'}</td>
                         <td className="px-3 py-3 text-gray-500 text-xs">{formatRelativeTime(c.created_at)}</td>
                         <td className="px-3 py-3">
                           <div className="flex items-center gap-2">
@@ -191,7 +191,7 @@ export default function DashboardClient({
         </div>
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
           {notifications.length === 0 ? (
-            <div className="p-6 text-center text-sm text-gray-400">You're all caught up! ✅</div>
+            <div className="p-6 text-center text-sm text-gray-400">You&apos;re all caught up! ✅</div>
           ) : (
             notifications.map((n) => (
               <div key={n.id} className={`flex items-start gap-3 px-4 py-3 border-b last:border-0 ${!n.is_read ? 'bg-blue-50' : ''}`}>

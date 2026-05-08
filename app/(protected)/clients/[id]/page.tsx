@@ -37,7 +37,7 @@ export default async function ClientDetailPage({ params }: Props) {
   if (error || !client) notFound();
 
   // Fetch notes based on role
-  let notesQuery = supabase
+  const notesQuery = supabase
     .from('notes')
     .select('*, author:profiles!notes_author_id_fkey(id, full_name, role)')
     .eq('client_id', params.id)

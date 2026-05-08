@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { createSupabaseBrowserClient } from '@/lib/supabase';
 import { toast } from 'sonner';
-import { LOAN_STATUSES, LEAD_SOURCE_SUGGESTIONS } from '@/lib/constants';
+import { LEAD_SOURCE_SUGGESTIONS } from '@/lib/constants';
 import NotesPanel from '@/components/clients/NotesPanel';
 import AuditLogTable from '@/components/clients/AuditLogTable';
 import UnsavedChangesModal from '@/components/clients/UnsavedChangesModal';

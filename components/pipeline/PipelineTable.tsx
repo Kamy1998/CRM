@@ -15,7 +15,7 @@ interface Props {
   onRequestDelete?: (client: Client) => void;
 }
 
-export default function PipelineTable({ clients, role, onDelete, onRequestDelete }: Props) {
+export default function PipelineTable({ clients, role, onDelete }: Props) {
   if (clients.length === 0) {
     return (
       <div className="bg-white rounded-xl border border-gray-200 py-16 text-center text-gray-400 text-sm">

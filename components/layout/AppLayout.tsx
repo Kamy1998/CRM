@@ -7,7 +7,6 @@ import { createSupabaseBrowserClient } from '@/lib/supabase';
 import Sidebar from './Sidebar';
 import NotificationBell from './NotificationBell';
 import { Sheet, SheetContent } from '@/components/ui/sheet';
-import { Badge } from '@/components/ui/badge';
 import type { Profile } from '@/types';
 
 const roleLabel: Record<string, string> = {

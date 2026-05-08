@@ -2,7 +2,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase';
 import MyClientsClient from './MyClientsClient';
-import type { Profile, Client } from '@/types';
+import type { Client } from '@/types';
 
 export default async function MyClientsPage() {
   const cookieStore = cookies();
@@ -36,7 +36,6 @@ export default async function MyClientsPage() {
 
   return (
     <MyClientsClient
-      profile={profile as Profile}
       clients={(clients ?? []) as Partial<Client>[]}
     />
   );
