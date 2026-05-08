@@ -5,8 +5,10 @@ import { createSupabaseBrowserClient } from '@/lib/supabase';
 import { toast } from 'sonner';
 import PipelineFilterBar, { type PipelineFilters } from '@/components/pipeline/PipelineFilters';
 import PipelineTable from '@/components/pipeline/PipelineTable';
+import ImportModal from '@/components/pipeline/ImportModal';
 import type { Client, Profile } from '@/types';
 import { parseISO, isValid } from 'date-fns';
+import { Upload } from 'lucide-react';
 
 interface Props {
   currentProfile: Profile;
@@ -33,6 +35,7 @@ export default function PipelineClient({ currentProfile, agents, loas }: Props) 
   const [deleteTarget, setDeleteTarget] = useState<Client | null>(null);
   const [deleteConfirmName, setDeleteConfirmName] = useState('');
   const [deleting, setDeleting] = useState(false);
+  const [showImport, setShowImport] = useState(false);
 
   const supabase = createSupabaseBrowserClient();
 
@@ -127,6 +130,15 @@ export default function PipelineClient({ currentProfile, agents, loas }: Props) 
             {loading ? 'Loading…' : `${filtered.length} client${filtered.length !== 1 ? 's' : ''}`}
           </p>
         </div>
+        {currentProfile.role === 'admin' && (
+          <button
+            onClick={() => setShowImport(true)}
+            className="flex items-center gap-2 px-4 py-2 text-sm bg-[#1E3A5F] hover:bg-[#16324f] text-white rounded-lg"
+          >
+            <Upload size={16} />
+            Import CSV
+          </button>
+        )}
       </div>
 
       <PipelineFilterBar
@@ -146,6 +158,16 @@ export default function PipelineClient({ currentProfile, agents, loas }: Props) 
           role={currentProfile.role}
           onDelete={currentProfile.role === 'admin' ? setDeleteTarget : undefined}
           onRequestDelete={currentProfile.role !== 'admin' ? handleRequestDelete : undefined}
+        />
+      )}
+
+      {showImport && (
+        <ImportModal
+          onClose={() => setShowImport(false)}
+          onImported={loadClients}
+          agents={agents}
+          loas={loas}
+          currentUserId={currentProfile.id}
         />
       )}
 
